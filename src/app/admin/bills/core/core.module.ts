@@ -3,25 +3,25 @@ import { CommonModule } from '@angular/common';
 
 import { CoreModule as AppCoreModule } from '../../../core/core.module';
 import { SharedModule as AppSharedModule } from '../../../shared/shared.module';
-import { UserTableComponent } from './components/user-table/user-table.component';
-import { UserFormComponent } from './components/user-form/user-form.component';
+import { BillTableComponent } from './components/bill-table/bill-table.component';
+import { BillFormComponent } from './components/bill-form/bill-form.component';
 
 @NgModule({
   declarations: [
-    UserTableComponent,
-    UserFormComponent
+    BillTableComponent,
+    BillFormComponent
   ],
   imports: [
     CommonModule,
     AppCoreModule,
     AppSharedModule
   ],
-  exports: [
-    UserTableComponent,
-    UserFormComponent
+  exports:[
+    BillTableComponent,
+    BillFormComponent
   ],
   entryComponents: [
-    UserFormComponent
+    BillFormComponent
   ]
 })
 export class CoreModule { }

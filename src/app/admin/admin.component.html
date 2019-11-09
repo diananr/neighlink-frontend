@@ -3,10 +3,12 @@
 		[attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
 		[mode]="(isHandset$ | async) ? 'over' : 'side'"
 		[opened]="(isHandset$ | async) === false">
-		<mat-toolbar>Menu</mat-toolbar>
+		<mat-toolbar>Juan de Aliaga</mat-toolbar>
 		<mat-nav-list>
 			<a mat-list-item routerLink="/">Dashboard</a>
 			<a mat-list-item routerLink="/users">Usuarios</a>
+			<a mat-list-item routerLink="/bills">Cuentas</a>
+			<a mat-list-item routerLink="/payments">Pagos</a>
 			<button mat-list-item (click)="logout()">Cerrar Sesión</button>
 		</mat-nav-list>
 	</mat-sidenav>
@@ -22,6 +24,8 @@
 			</button>
 			<span>Neighlink</span>
 		</mat-toolbar>
-		<router-outlet></router-outlet>
+		<div style="padding: 20px;min-height: 80vh;">
+			<router-outlet style="width: 90%;margin: auto;"></router-outlet>
+		</div>
 	</mat-sidenav-content>
 </mat-sidenav-container>

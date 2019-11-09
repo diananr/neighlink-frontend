@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { CoreModule as AppCoreModule } from '../../../core/core.module';
 import { SharedModule as AppSharedModule } from '../../../shared/shared.module';
-import { UserTableComponent } from './components/user-table/user-table.component';
-import { UserFormComponent } from './components/user-form/user-form.component';
+import { PaymentTableComponent } from './components/payment-table/payment-table.component';
+import { PaymentFormComponent } from './components/payment-form/payment-form.component';
 
 @NgModule({
   declarations: [
-    UserTableComponent,
-    UserFormComponent
+    PaymentTableComponent,
+    PaymentFormComponent
   ],
   imports: [
     CommonModule,
@@ -17,11 +17,11 @@ import { UserFormComponent } from './components/user-form/user-form.component';
     AppSharedModule
   ],
   exports: [
-    UserTableComponent,
-    UserFormComponent
+    PaymentTableComponent,
+    PaymentFormComponent
   ],
   entryComponents: [
-    UserFormComponent
+    PaymentFormComponent
   ]
 })
 export class CoreModule { }

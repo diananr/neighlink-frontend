@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>Agregar usuario</h2>
+<mat-dialog-content class="mat-typography">
+    <div class="example-container">
+        <mat-form-field>
+            <input matInput placeholder="Nombres">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Apellidos">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Correo">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-select placeholder="Edificio">
+                <mat-option value="1">Los jazmines</mat-option>
+                <mat-option value="2">Los girasoles</mat-option>
+                <mat-option value="3">Las flores</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-select placeholder="Rol">
+                <mat-option value="1">Propietario</mat-option>
+                <mat-option value="2">Administrador</mat-option>
+                <mat-option value="2">Presidente</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Monto">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Fecha de pago">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Agregar</button>
+</mat-dialog-actions>

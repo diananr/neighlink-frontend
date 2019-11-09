@@ -14,6 +14,14 @@ const routes: Routes = [
         path: 'users',
         loadChildren:() => import('src/app/admin/users/users.module').then(m => m.UsersModule)
       },
+      {
+        path: 'bills',
+        loadChildren:() => import('src/app/admin/bills/bills.module').then(m => m.BillsModule)
+      },
+      {
+        path: 'payments',
+        loadChildren:() => import('src/app/admin/payments/payments.module').then(m => m.PaymentsModule)
+      },
     ]
   }
 ];
