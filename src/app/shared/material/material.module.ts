@@ -22,6 +22,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatChipsModule } from '@angular/material/chips';
 @NgModule({
   declarations: [],
   imports: [
@@ -45,7 +46,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatFormFieldModule,
     MatStepperModule,
     MatDialogModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatChipsModule
   ],
   exports: [
     MatButtonModule,
@@ -68,7 +70,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatStepperModule,
     MatDialogModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatChipsModule
   ],
   providers: [
     MatDatepickerModule,

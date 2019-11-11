@@ -22,6 +22,10 @@ const routes: Routes = [
         path: 'payments',
         loadChildren:() => import('src/app/admin/payments/payments.module').then(m => m.PaymentsModule)
       },
+      {
+        path: 'polls',
+        loadChildren:() => import('src/app/admin/polls/polls.module').then(m => m.PollsModule)
+      },
     ]
   }
 ];
