@@ -1,4 +1,5 @@
-<h2 mat-dialog-title>Agregar usuario</h2>
+<h2 mat-dialog-title *ngIf="!userId">Agregar usuario</h2>
+<h2 mat-dialog-title *ngIf="userId">Editar usuario</h2>
 <form [formGroup]="userFG" (ngSubmit)="onSubmit()">
     <mat-dialog-content class="mat-typography">
         <div class="example-container">

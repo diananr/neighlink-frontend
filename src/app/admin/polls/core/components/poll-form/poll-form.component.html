@@ -1,4 +1,5 @@
-<h2 mat-dialog-title>Agregar encuesta</h2>
+<h2 mat-dialog-title *ngIf="!pollId">Agregar encuesta</h2>
+<h2 mat-dialog-title *ngIf="pollId">Editar encuesta</h2>
 <form [formGroup]="pollFG" (ngSubmit)="onSubmit()">
     <mat-dialog-content class="mat-typography">
         <div class="example-container">
