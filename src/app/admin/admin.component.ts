@@ -3,6 +3,8 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { USER_ROLE } from 'src/app/core/constants/global.constants';
+import { User } from '../core/models/user.model';
 
 @Component({
   selector: 'app-admin',
@@ -10,8 +12,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  public user: User;
+  public userRole = USER_ROLE;
+  public isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
       shareReplay()
@@ -20,10 +23,16 @@ export class AdminComponent implements OnInit {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private router: Router
-  ) {}
+  ) {
+    const userLogged = localStorage.getItem('userLogged');
+    console.log('user', userLogged);
+    if(userLogged) this.user = JSON.parse(userLogged);
+    console.log('user', this.user);
+  }
 
   logout() {
     this.router.navigate(['/auth']);
+    localStorage.clear();
   }
 
   ngOnInit(){}

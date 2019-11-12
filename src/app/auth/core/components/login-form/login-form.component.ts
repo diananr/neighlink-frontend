@@ -29,6 +29,13 @@ export class LoginFormComponent implements OnInit {
     this.reset();
   }
   onLogin(){
+    const userLogged = {
+      "id": "1",
+      "roleId": 3,
+      "name": "Diana"
+    }
+    localStorage.setItem('userLogged', JSON.stringify(userLogged));
+    //delete up
     if(this.loginFG.valid){
       const loginRequest = {
         code: this.loginFG.value.code,
@@ -40,6 +47,7 @@ export class LoginFormComponent implements OnInit {
       this.authService.login(loginRequest)
         .subscribe(
           (response: any) => {
+            //localStorage.setItem('userLogged', JSON.stringify(response.data));
             this.router.navigateByUrl('/');
             this.loading = false;
           },

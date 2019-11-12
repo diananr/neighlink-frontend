@@ -1,0 +1,6 @@
+export enum USER_ROLE {
+    ADMINISTRATOR,
+    PRESIDENT,
+    TREASURER,
+    OWNER
+};

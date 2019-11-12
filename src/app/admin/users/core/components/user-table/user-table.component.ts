@@ -6,26 +6,26 @@ import { UserFormComponent } from '../user-form/user-form.component';
 import { User } from '../../../../../core/models/user.model';
 
 const ELEMENT_DATA: User[] = [
-  {id: 1,  role: 'Propietariop', name: 'Hydrogen', lastName: 'Ruiz', email: 'email@gmail.com', building: 'Las girasoles'},
-  {id: 2,  role: 'Propietariop', name: 'Helium', lastName: 'Jimenez', email: 'email@gmail.com', building: 'Las flores'},
-  {id: 3,  role: 'Propietariop', name: 'Lithium', lastName: 'Monterrey', email: 'email@gmail.com', building: 'Las flores'},
-  {id: 4,  role: 'Propietariop', name: 'Beryllium', lastName: 'De la piedra', email: 'email@gmail.com', building: 'Los girasoles'},
-  {id: 5,  role: 'Propietariop', name: 'Boron', lastName: 'Toribio', email: 'email@gmail.com', building: 'Las flores'},
-  {id: 6,  role: 'Propietariop', name: 'Carbon', lastName: 'Caravedo', email: 'email@gmail.com', building: 'Las flores'},
-  {id: 7,  role: 'Propietariop', name: 'Nitrogen', lastName: 'Ruiz', email: 'email@gmail.com', building: 'Las flores'},
-  {id: 8,  role: 'Propietariop', name: 'Oxygen', lastName: 'Liao', email: 'email@gmail.com', building: 'Las girasoles'},
-  {id: 9,  role: 'Propietariop', name: 'Fluorine', lastName: 'Ruiz', email: 'email@gmail.com', building: 'Las girasoles'},
-  {id: 10, role: 'Propietariop', name: 'Neon', lastName: 'Ruiz', email: 'email@gmail.com', building: 'Las flores'},
-  {id: 11, role: 'Propietariop', name: 'Sodium', lastName: 'Ruiz', email: 'email@gmail.com', building: 'Las flores'},
-  {id: 12, role: 'Propietariop', name: 'Magnesium', lastName: 'Ruiz', email: 'email@gmail.com', building: 'Las flores'},
-  {id: 13, role: 'Propietariop', name: 'Aluminum', lastName: 'Ruiz', email: 'email@gmail.com', building: 'Las girasoles'},
-  {id: 14, role: 'Propietariop', name: 'Silicon', lastName: 'Ruiz', email: 'email@gmail.com', building: 'Las flores'},
-  {id: 15, role: 'Propietariop', name: 'Phosphorus', lastName: 'Ruiz', email: 'email@gmail.com', building: 'Las girasoles'},
-  {id: 16, role: 'Propietariop', name: 'Sulfur', lastName: 'Ruiz', email: 'email@gmail.com', building: 'Las flores'},
-  {id: 17, role: 'Propietariop', name: 'Chlorine', lastName: 'Ruiz', email: 'email@gmail.com', building: 'Las flores'},
-  {id: 18, role: 'Propietariop', name: 'Argon', lastName: 'Ruiz', email: 'email@gmail.com', building: 'Las girasoles'},
-  {id: 19, role: 'Propietariop', name: 'Potassium', lastName: 'Ruiz', email: 'email@gmail.com', building: 'Las girasoles'},
-  {id: 20, role: 'Propietariop', name: 'Calcium', lastName: 'Ruiz', email: 'email@gmail.com', building: 'Las flores'},
+  {id: 1,  roleId: 3, name: 'Hydrogen', lastName: 'Ruiz', email: 'email@gmail.com', buildingId: 2},
+  {id: 2,  roleId: 3, name: 'Helium', lastName: 'Jimenez', email: 'email@gmail.com', buildingId: 1},
+  {id: 3,  roleId: 3, name: 'Lithium', lastName: 'Monterrey', email: 'email@gmail.com', buildingId: 1},
+  {id: 4,  roleId: 3, name: 'Beryllium', lastName: 'De la piedra', email: 'email@gmail.com', buildingId: 3},
+  {id: 5,  roleId: 3, name: 'Boron', lastName: 'Toribio', email: 'email@gmail.com', buildingId: 1},
+  {id: 6,  roleId: 3, name: 'Carbon', lastName: 'Caravedo', email: 'email@gmail.com', buildingId: 1},
+  {id: 7,  roleId: 3, name: 'Nitrogen', lastName: 'Ruiz', email: 'email@gmail.com', buildingId: 1},
+  {id: 8,  roleId: 3, name: 'Oxygen', lastName: 'Liao', email: 'email@gmail.com', buildingId: 2},
+  {id: 9,  roleId: 3, name: 'Fluorine', lastName: 'Ruiz', email: 'email@gmail.com', buildingId: 2},
+  {id: 10, roleId: 3, name: 'Neon', lastName: 'Ruiz', email: 'email@gmail.com', buildingId: 1},
+  {id: 11, roleId: 3, name: 'Sodium', lastName: 'Ruiz', email: 'email@gmail.com', buildingId: 1},
+  {id: 12, roleId: 3, name: 'Magnesium', lastName: 'Ruiz', email: 'email@gmail.com', buildingId: 1},
+  {id: 13, roleId: 3, name: 'Aluminum', lastName: 'Ruiz', email: 'email@gmail.com', buildingId: 2},
+  {id: 14, roleId: 3, name: 'Silicon', lastName: 'Ruiz', email: 'email@gmail.com', buildingId: 1},
+  {id: 15, roleId: 3, name: 'Phosphorus', lastName: 'Ruiz', email: 'email@gmail.com', buildingId: 2},
+  {id: 16, roleId: 3, name: 'Sulfur', lastName: 'Ruiz', email: 'email@gmail.com', buildingId: 1},
+  {id: 17, roleId: 3, name: 'Chlorine', lastName: 'Ruiz', email: 'email@gmail.com', buildingId: 1},
+  {id: 18, roleId: 3, name: 'Argon', lastName: 'Ruiz', email: 'email@gmail.com', buildingId: 2},
+  {id: 19, roleId: 3, name: 'Potassium', lastName: 'Ruiz', email: 'email@gmail.com', buildingId: 2},
+  {id: 20, roleId: 3, name: 'Calcium', lastName: 'Ruiz', email: 'email@gmail.com', buildingId: 1},
 ];
 
 @Component({
@@ -34,7 +34,7 @@ const ELEMENT_DATA: User[] = [
   styleUrls: ['./user-table.component.scss']
 })
 export class UserTableComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'lastName', 'email', 'building', 'status', 'options'];
+  displayedColumns: string[] = ['name', 'lastName', 'email', 'buildingId', 'status', 'options'];
   dataSource = new MatTableDataSource<User>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;

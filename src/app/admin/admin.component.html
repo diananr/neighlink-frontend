@@ -5,9 +5,9 @@
 		[opened]="(isHandset$ | async) === false">
 		<mat-toolbar>Juan de Aliaga</mat-toolbar>
 		<mat-nav-list>
-			<a mat-list-item routerLink="/">Dashboard</a>
-			<a mat-list-item routerLink="/users">Usuarios</a>
-			<a mat-list-item routerLink="/bills">Cuentas</a>
+			<a mat-list-item routerLink="/" *ngIf="user.roleId != userRole.OWNER">Dashboard</a>
+			<a mat-list-item routerLink="/users" *ngIf="user.roleId != userRole.OWNER">Usuarios</a>
+			<a mat-list-item routerLink="/bills" *ngIf="user.roleId != userRole.OWNER">Cuentas</a>
 			<a mat-list-item routerLink="/payments">Pagos</a>
 			<a mat-list-item routerLink="/polls">Encuestas</a>
 			<button mat-list-item (click)="logout()">Cerrar Sesión</button>
