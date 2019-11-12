@@ -34,7 +34,7 @@ const ELEMENT_DATA: Payment[] = [
   styleUrls: ['./payment-table.component.scss']
 })
 export class PaymentTableComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'bill', 'user', 'amount', 'date'];
+  displayedColumns: string[] = ['id', 'bill', 'user', 'amount', 'date', 'status', 'options'];
   dataSource = new MatTableDataSource<Payment>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;

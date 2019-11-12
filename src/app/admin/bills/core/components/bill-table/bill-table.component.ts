@@ -33,7 +33,7 @@ const ELEMENT_DATA: Bill[] = [
   styleUrls: ['./bill-table.component.scss']
 })
 export class BillTableComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'title', 'building', 'type', 'amount', 'date'];
+  displayedColumns: string[] = ['id', 'title', 'building', 'type', 'amount', 'date', 'status', 'options'];
   dataSource = new MatTableDataSource<Bill>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;

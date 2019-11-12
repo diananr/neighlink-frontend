@@ -31,10 +31,11 @@ export class LoginFormComponent implements OnInit {
   onLogin(){
     const userLogged = {
       "id": "1",
-      "roleId": 3,
+      "roleId": this.loginFG.value.code,
       "name": "Diana"
     }
     localStorage.setItem('userLogged', JSON.stringify(userLogged));
+    this.router.navigateByUrl('/');
     //delete up
     if(this.loginFG.valid){
       const loginRequest = {
