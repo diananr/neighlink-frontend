@@ -4,13 +4,13 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'login-form',
-  templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.scss']
+  selector: 'signup-form',
+  templateUrl: './signup-form.component.html',
+  styleUrls: ['./signup-form.component.scss']
 })
-export class LoginFormComponent implements OnInit {
+export class SignupFormComponent implements OnInit {
 
-  public loginFG: FormGroup;
+  public signupFG: FormGroup;
   public loading: boolean;
 
   constructor(private fb: FormBuilder, private authService: AuthService,
@@ -18,8 +18,10 @@ export class LoginFormComponent implements OnInit {
 
   reset(){
     this.loading = false;
-    this.loginFG = this.fb.group({
+    this.signupFG = this.fb.group({
       code: ['',[Validators.required]],
+      name: ['',[Validators.required]],
+      lastName: ['',[Validators.required]],
       email: ['',[Validators.email]],
       password: ['',[Validators.required]],
     })
@@ -28,16 +30,19 @@ export class LoginFormComponent implements OnInit {
   ngOnInit() {
     this.reset();
   }
-  onLogin(){
-    if(this.loginFG.valid){
-      const loginRequest = {
-        code: this.loginFG.value.code,
-        email: this.loginFG.value.email,
-        password: this.loginFG.value.password
+
+  onSignup(){
+    if(this.signupFG.valid){
+      const signupRequest = {
+        code: this.signupFG.value.code,
+        name: this.signupFG.value.name,
+        lastName: this.signupFG.value.lastName,
+        email: this.signupFG.value.email,
+        password: this.signupFG.value.password,
       }
 
       this.loading = true;
-      this.authService.login(loginRequest)
+      this.authService.signup(signupRequest)
         .subscribe(
           (response: any) => {
             this.router.navigateByUrl('/');

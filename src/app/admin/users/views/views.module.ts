@@ -5,10 +5,12 @@ import { CoreModule } from '../core/core.module';
 import { ViewsRoutingModule } from './views-routing.module';
 
 import { UserListViewComponent } from './user-list-view/user-list-view.component';
+import { EditUserViewComponent } from './edit-user-view/edit-user-view.component';
 
 @NgModule({
   declarations: [
-    UserListViewComponent
+    UserListViewComponent,
+    EditUserViewComponent
   ],
   imports: [
     CommonModule,

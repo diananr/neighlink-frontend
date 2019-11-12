@@ -34,7 +34,7 @@ const ELEMENT_DATA: Poll[] = [
   styleUrls: ['./poll-table.component.scss']
 })
 export class PollTableComponent implements OnInit {
-  displayedColumns: string[] = ['title', 'startDate', 'endDate', 'status', 'numberOfVotes', 'options'];
+  displayedColumns: string[] = ['title', 'startDate', 'endDate', 'numberOfVotes', 'status', 'options'];
   dataSource = new MatTableDataSource<Poll>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -57,5 +57,9 @@ export class PollTableComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result.status) console.log('update list')
     });
+  }
+
+  delete(id){
+    console.log('id', id);
   }
 }

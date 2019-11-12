@@ -34,7 +34,7 @@ const ELEMENT_DATA: User[] = [
   styleUrls: ['./user-table.component.scss']
 })
 export class UserTableComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'lastName', 'email', 'building'];
+  displayedColumns: string[] = ['name', 'lastName', 'email', 'building', 'status', 'options'];
   dataSource = new MatTableDataSource<User>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
