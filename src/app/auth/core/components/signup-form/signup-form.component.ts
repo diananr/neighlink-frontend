@@ -19,11 +19,15 @@ export class SignupFormComponent implements OnInit {
   reset(){
     this.loading = false;
     this.signupFG = this.fb.group({
-      code: ['',[Validators.required]],
-      name: ['',[Validators.required]],
+      condominiumId: ['',[Validators.required]],
+      firstName: ['',[Validators.required]],
       lastName: ['',[Validators.required]],
       email: ['',[Validators.email]],
       password: ['',[Validators.required]],
+      phoneNumber: [''],
+      photoUrl: [''],
+      gender: [0],
+      role: [0],
     })
   }
 
@@ -33,19 +37,14 @@ export class SignupFormComponent implements OnInit {
 
   onSignup(){
     if(this.signupFG.valid){
-      const signupRequest = {
-        code: this.signupFG.value.code,
-        name: this.signupFG.value.name,
-        lastName: this.signupFG.value.lastName,
-        email: this.signupFG.value.email,
-        password: this.signupFG.value.password,
-      }
-
       this.loading = true;
+      const signupRequest = Object.assign({},this.signupFG.value);
       this.authService.signup(signupRequest)
         .subscribe(
           (response: any) => {
-            this.router.navigateByUrl('/');
+            if (response) {
+              this.router.navigateByUrl('/');
+            }
             this.loading = false;
           },
           (error: any) => {

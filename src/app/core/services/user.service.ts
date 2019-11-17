@@ -17,10 +17,10 @@ export class UserService {
   }
 
   getUsers() {
-    return this.apiService.get('api/user/all');
+    return this.apiService.get('api/user/by-condominium/1');
   }
 
   getUserById(userId: number) {
-    return this.apiService.get(`api/user/byId/${userId}`);
+    return this.apiService.get(`api/user/${userId}`);
   }
 }

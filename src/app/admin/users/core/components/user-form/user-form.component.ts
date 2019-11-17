@@ -23,12 +23,12 @@ export class UserFormComponent implements OnInit {
   reset(){
     this.userFG = this.fb.group({
       id: [],
-      name: ['',[Validators.required]],
+      firstName: ['',[Validators.required]],
       lastName: ['',[Validators.required]],
       email: ['',[Validators.email]],
       password: ['',[Validators.required]],
       buildingId: ['',[Validators.required]],
-      roleId: ['',[Validators.required]],
+      role: ['',[Validators.required]],
       status: []
     });
     this.userId = null;
@@ -58,7 +58,7 @@ export class UserFormComponent implements OnInit {
   getUser(){
     this.userService.getUserById(this.userId).subscribe(
       (response: any)=>{
-        this.userFG.patchValue(response.data);
+        this.userFG.patchValue(response);
       },
       (error: any)=>{
         console.log('error', error);

@@ -19,7 +19,7 @@ export class LoginFormComponent implements OnInit {
   reset(){
     this.loading = false;
     this.loginFG = this.fb.group({
-      code: ['',[Validators.required]],
+      condominiumId: [null,[Validators.required]],
       email: ['',[Validators.email]],
       password: ['',[Validators.required]],
     })
@@ -28,27 +28,15 @@ export class LoginFormComponent implements OnInit {
   ngOnInit() {
     this.reset();
   }
-  onLogin(){
-    const userLogged = {
-      "id": "1",
-      "roleId": this.loginFG.value.code,
-      "name": "Diana"
-    }
-    localStorage.setItem('userLogged', JSON.stringify(userLogged));
-    this.router.navigateByUrl('/');
-    //delete up
-    if(this.loginFG.valid){
-      const loginRequest = {
-        code: this.loginFG.value.code,
-        email: this.loginFG.value.email,
-        password: this.loginFG.value.password
-      }
 
+  onLogin(){
+    if(this.loginFG.valid){
       this.loading = true;
+      const loginRequest = Object.assign({},this.loginFG.value);
       this.authService.login(loginRequest)
         .subscribe(
           (response: any) => {
-            //localStorage.setItem('userLogged', JSON.stringify(response.data));
+            localStorage.setItem('userLogged', JSON.stringify(response));
             this.router.navigateByUrl('/');
             this.loading = false;
           },
