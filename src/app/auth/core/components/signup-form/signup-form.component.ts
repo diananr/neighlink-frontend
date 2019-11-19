@@ -4,6 +4,8 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { Router } from '@angular/router';
 import { CondominiumService } from 'src/app/core/services/condominium.service';
 import { Condominium } from 'src/app/core/models/condominium.model';
+import { BuildingService } from 'src/app/core/services/building.service';
+import { Building } from 'src/app/core/models/building.model';
 
 @Component({
   selector: 'signup-form',
@@ -15,12 +17,14 @@ export class SignupFormComponent implements OnInit {
   public loading: boolean;
   public signupFG: FormGroup;
   public condominiums: Condominium[];
+  public buildings: Building[];
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private condominiumService: CondominiumService,
-    private router: Router
+    private router: Router,
+    private buildingService: BuildingService
   ) { }
 
   reset(){
@@ -31,7 +35,8 @@ export class SignupFormComponent implements OnInit {
       lastName: ['',[Validators.required]],
       email: ['',[Validators.email]],
       password: ['',[Validators.required]],
-      role: [0, ,[Validators.required]],
+      role: ['', ,[Validators.required]],
+      buildingId: [],
     });
     this.condominiums = [];
   }
@@ -47,9 +52,24 @@ export class SignupFormComponent implements OnInit {
     );
   }
 
+  getBuildings(){
+    this.buildingService.getBuildingsByCondominium(this.signupFG.value.condominiumId).subscribe(
+      (response: any)=>{
+        this.buildings = response;
+      },
+      (error: any)=>{
+        console.log('error', error);
+      }
+    )
+  }
+
   ngOnInit() {
     this.reset();
     this.getCondominiums();
+  }
+
+  condominiumChosed(){
+    this.getBuildings();
   }
 
   onSignup(){

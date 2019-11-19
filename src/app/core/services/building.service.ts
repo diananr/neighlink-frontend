@@ -20,8 +20,9 @@ export class BuildingService {
     return this.apiService.get(`api/building/byId/${buildingId}`);
   }
 
-  getBuildingsByCondominium() {
+  getBuildingsByCondominium(condominiumId?: number) {
     var userLogged = JSON.parse(localStorage.getItem('userLogged'));
-    return this.apiService.get('api/building/by-condominium/'+ userLogged.condominiumId);
+    var condoId = condominiumId ? condominiumId : userLogged.condominiumId;
+    return this.apiService.get('api/building/by-condominium/'+ condoId);
   }
 }

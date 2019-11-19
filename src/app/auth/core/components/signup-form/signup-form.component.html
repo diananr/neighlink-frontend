@@ -1,7 +1,7 @@
 <form [formGroup]="signupFG" (ngSubmit)="onSignup()">
     <div class="example-container">
         <mat-form-field>
-            <mat-select placeholder="Selecciona tu condominio" formControlName="condominiumId">
+            <mat-select placeholder="Selecciona tu condominio" formControlName="condominiumId" (change)="condominiumChosed()">
                 <mat-option *ngFor="let condominium of condominiums" [value]="condominium.id">{{condominium.name}}</mat-option>
             </mat-select>
         </mat-form-field>
@@ -21,6 +21,11 @@
             <mat-select placeholder="Rol" formControlName="role">
                 <mat-option value="0">Administrador</mat-option>
                 <mat-option value="1">Propietario</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field *ngIf="signupFG.value.role == 1">
+            <mat-select placeholder="Edificio" formControlName="buildingId">
+                <mat-option *ngFor="let building of buildings" [value]="building.id">{{building.name}}</mat-option>
             </mat-select>
         </mat-form-field>
         <div>
