@@ -7,6 +7,7 @@ import { PaymentService } from './payment.service';
 import { PollService } from './poll.service';
 import { BuildingService } from './building.service';
 import { AuthService } from './auth.service';
+import { CondominiumService } from './condominium.service'
 
 @NgModule({
   declarations: [],
@@ -20,7 +21,8 @@ import { AuthService } from './auth.service';
     PaymentService,
     PollService,
     BuildingService,
-    AuthService
+    AuthService,
+    CondominiumService
   ]
 })
 export class ServicesModule { }

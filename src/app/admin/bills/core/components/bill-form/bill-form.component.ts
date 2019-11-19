@@ -36,7 +36,7 @@ export class BillFormComponent implements OnInit {
   }
 
   getBuildings(){
-    this.buildingService.getBuildings().subscribe(
+    this.buildingService.getBuildingsByCondominium().subscribe(
       (response) => {
         console.log('response', response);
       },
@@ -90,5 +90,4 @@ export class BillFormComponent implements OnInit {
       console.log('invalid form', this.billFG.value);
     }
   }
-
 }

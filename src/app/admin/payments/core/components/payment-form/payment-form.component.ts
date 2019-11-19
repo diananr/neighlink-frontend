@@ -39,7 +39,7 @@ export class PaymentFormComponent implements OnInit {
   }
 
   getUsers(){
-    this.userService.getUsers().subscribe(
+    this.userService.getUsersByCondominium().subscribe(
       (response) => {
         console.log('response', response);
       },

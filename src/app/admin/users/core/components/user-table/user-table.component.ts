@@ -12,17 +12,20 @@ import { UserService } from 'src/app/core/services/user.service';
   styleUrls: ['./user-table.component.scss']
 })
 export class UserTableComponent implements OnInit {
-  displayedColumns: string[] = ['firstName', 'lastName', 'email', 'buildingId', 'status', 'options'];
-  dataSource = new MatTableDataSource<User>();
-
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  constructor(public dialog: MatDialog, private userService: UserService) {}
+  displayedColumns = ['name', 'lastName', 'email', 'phone', 'building', 'houseNumber', 'options'];
+  dataSource = new MatTableDataSource<User>();
+
+  constructor(
+    public dialog: MatDialog,
+    private userService: UserService
+  ) {}
 
   getUsers(){
-    this.userService.getUsers().subscribe(
-      (reponse: any) =>{
-        this.dataSource = reponse;
+    this.userService.getUsersByCondominium().subscribe(
+      (response: any) =>{
+        this.dataSource = response;
         this.dataSource.paginator = this.paginator;
       },
       (error: any) =>{

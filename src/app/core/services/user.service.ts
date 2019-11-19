@@ -16,11 +16,12 @@ export class UserService {
     return this.apiService.put('api/user', request);
   }
 
-  getUsers() {
-    return this.apiService.get('api/user/by-condominium/1');
-  }
-
   getUserById(userId: number) {
     return this.apiService.get(`api/user/${userId}`);
+  }
+
+  getUsersByCondominium() {
+    var userLogged = JSON.parse(localStorage.getItem('userLogged'));
+    return this.apiService.get('api/user/by-condominium/'+ userLogged.condominiumId);
   }
 }

@@ -16,11 +16,12 @@ export class BuildingService {
     return this.apiService.put('api/building', request);
   }
 
-  getBuildings() {
-    return this.apiService.get('api/building/all');
-  }
-
   getBuildingById(buildingId: number) {
     return this.apiService.get(`api/building/byId/${buildingId}`);
+  }
+
+  getBuildingsByCondominium() {
+    var userLogged = JSON.parse(localStorage.getItem('userLogged'));
+    return this.apiService.get('api/building/by-condominium/'+ userLogged.condominiumId);
   }
 }

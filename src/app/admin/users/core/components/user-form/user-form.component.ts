@@ -5,6 +5,7 @@ import { BuildingService } from 'src/app/core/services/building.service';
 import { User } from 'src/app/core/models/user.model';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Building } from 'src/app/core/models/building.model';
 
 @Component({
   selector: 'user-form',
@@ -12,33 +13,37 @@ import { Observable } from 'rxjs';
   styleUrls: ['./user-form.component.scss']
 })
 export class UserFormComponent implements OnInit {
-  public userFG: FormGroup;
   public userId: number;
-  public buildings: any[];
+  public userFG: FormGroup;
+  public buildings: Building[];
 
-  constructor(private fb: FormBuilder, private userService: UserService,
-    private buildingService: BuildingService, private router: Router,
-    private route: ActivatedRoute) { }
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute,
+    private userService: UserService,
+    private buildingService: BuildingService
+  ) { }
 
   reset(){
+    this.userId = null;
     this.userFG = this.fb.group({
       id: [],
-      firstName: ['',[Validators.required]],
+      name: ['',[Validators.required]],
       lastName: ['',[Validators.required]],
       email: ['',[Validators.email]],
       password: ['',[Validators.required]],
-      buildingId: ['',[Validators.required]],
       role: ['',[Validators.required]],
-      status: []
+      buildingId: [],
+      houseNumber: [],
     });
-    this.userId = null;
     this.buildings = [];
   }
 
   getBuildings(){
-    this.buildingService.getBuildings().subscribe(
+    this.buildingService.getBuildingsByCondominium().subscribe(
       (response) => {
-        console.log('response', response);
+        this.buildings = response;
       },
       (error) => {
         console.log('error', error)

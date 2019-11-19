@@ -26,6 +26,10 @@ const routes: Routes = [
         path: 'polls',
         loadChildren:() => import('src/app/admin/polls/polls.module').then(m => m.PollsModule)
       },
+      {
+        path: 'buildings',
+        loadChildren:() => import('src/app/admin/buildings/buildings.module').then(m => m.BuildingsModule)
+      },
     ]
   }
 ];
