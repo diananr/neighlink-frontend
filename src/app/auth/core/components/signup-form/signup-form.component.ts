@@ -30,13 +30,13 @@ export class SignupFormComponent implements OnInit {
   reset(){
     this.loading = false;
     this.signupFG = this.fb.group({
-      condominiumId: ['',[Validators.required]],
+      condominiumId: [null,[Validators.required]],
       name: ['',[Validators.required]],
       lastName: ['',[Validators.required]],
       email: ['',[Validators.email]],
       password: ['',[Validators.required]],
-      role: ['', ,[Validators.required]],
-      buildingId: [],
+      role: ['',[Validators.required]],
+      buildingId: [null],
     });
     this.condominiums = [];
   }
