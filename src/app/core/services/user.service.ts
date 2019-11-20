@@ -9,6 +9,8 @@ export class UserService {
   ) { }
 
   createUser(request: any) {
+    var userLogged = JSON.parse(localStorage.getItem('userLogged'));
+    request.condominiumId = userLogged.condominiumId;
     return this.apiService.post('api/user', request);
   }
 

@@ -14,7 +14,7 @@ import { UserService } from 'src/app/core/services/user.service';
 export class UserTableComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  displayedColumns = ['name', 'lastName', 'email', 'phone', 'building', 'houseNumber', 'options'];
+  displayedColumns = ['name', 'lastName', 'email', 'phone', 'buildingId', 'houseNumber', 'options'];
   dataSource = new MatTableDataSource<User>();
 
   constructor(

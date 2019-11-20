@@ -1,8 +1,13 @@
 <form [formGroup]="signupFG" (ngSubmit)="onSignup()">
     <div class="example-container">
         <mat-form-field>
-            <mat-select placeholder="Selecciona tu condominio" formControlName="condominiumId" (change)="condominiumChosed()">
+            <mat-select placeholder="Selecciona tu condominio" formControlName="condominiumId" (selectionChange)="condominiumChosed()">
                 <mat-option *ngFor="let condominium of condominiums" [value]="condominium.id">{{condominium.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field *ngIf="signupFG.value.condominiumId">
+            <mat-select placeholder="Edificio" formControlName="buildingId">
+                <mat-option *ngFor="let building of buildings" [value]="building.id">{{building.name}}</mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field>
@@ -16,17 +21,6 @@
         </mat-form-field>
         <mat-form-field>
             <input matInput type="password" placeholder="Contraseña" formControlName="password">
-        </mat-form-field>
-        <mat-form-field>
-            <mat-select placeholder="Rol" formControlName="role">
-                <mat-option value="0">Administrador</mat-option>
-                <mat-option value="1">Propietario</mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field *ngIf="signupFG.value.role == 1">
-            <mat-select placeholder="Edificio" formControlName="buildingId">
-                <mat-option *ngFor="let building of buildings" [value]="building.id">{{building.name}}</mat-option>
-            </mat-select>
         </mat-form-field>
         <div>
             <button type="submit" mat-raised-button color="primary" style="width: 100%;">Regístrarme</button>

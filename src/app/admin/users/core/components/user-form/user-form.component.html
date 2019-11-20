@@ -34,6 +34,6 @@
     <mat-dialog-actions align="end" style="text-align: right;">
         <a *ngIf="userId" mat-button routerLink="/users">Cancelar</a>
         <a *ngIf="!userId" mat-button mat-dialog-close>Cancelar</a>
-        <button type="button" mat-button [mat-dialog-close]="true">Agregar</button>
+        <button type="submit" mat-button [mat-dialog-close]="true">Agregar</button>
     </mat-dialog-actions>
 </form>

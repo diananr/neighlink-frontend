@@ -6,6 +6,7 @@ import { CondominiumService } from 'src/app/core/services/condominium.service';
 import { Condominium } from 'src/app/core/models/condominium.model';
 import { BuildingService } from 'src/app/core/services/building.service';
 import { Building } from 'src/app/core/models/building.model';
+import { USER_ROLE } from 'src/app/core/constants/global.constants';
 
 @Component({
   selector: 'signup-form',
@@ -31,12 +32,11 @@ export class SignupFormComponent implements OnInit {
     this.loading = false;
     this.signupFG = this.fb.group({
       condominiumId: [null,[Validators.required]],
+      buildingId: [null,[Validators.required]],
       name: ['',[Validators.required]],
       lastName: ['',[Validators.required]],
       email: ['',[Validators.email]],
-      password: ['',[Validators.required]],
-      role: ['',[Validators.required]],
-      buildingId: [null],
+      password: ['',[Validators.required]]
     });
     this.condominiums = [];
   }
@@ -76,7 +76,8 @@ export class SignupFormComponent implements OnInit {
     if(this.signupFG.valid){
       this.loading = true;
       const signupRequest = Object.assign({},this.signupFG.value);
-
+      signupRequest.role = USER_ROLE.OWNER;
+      
       this.authService.signup(signupRequest)
         .subscribe(
           (response: any) => {
