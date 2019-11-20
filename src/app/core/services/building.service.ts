@@ -9,6 +9,9 @@ export class BuildingService {
   ) { }
 
   createBuilding(request: any) {
+    var userLogged = JSON.parse(localStorage.getItem('userLogged'));
+    request.condominiumId = userLogged.condominiumId;
+    delete request.id;
     return this.apiService.post('api/building', request);
   }
 

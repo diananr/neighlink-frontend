@@ -14,7 +14,7 @@ import { BuildingService } from 'src/app/core/services/building.service';
 export class BuildingTableComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  displayedColumns= ['id', 'name', 'numberOfHomes','options'];
+  displayedColumns= ['name', 'numberOfHomes','options'];
   dataSource = new MatTableDataSource<Building>();
 
   constructor(
@@ -26,6 +26,7 @@ export class BuildingTableComponent implements OnInit {
     this.buildingService.getBuildingsByCondominium().subscribe(
       (response: any) =>{
         this.dataSource = response;
+        console.log('asdasd', response);
         this.dataSource.paginator = this.paginator;
       },
       (error: any) =>{
