@@ -84,7 +84,7 @@ export class UserFormComponent implements OnInit {
 
       request.subscribe(
         (response: any)=>{
-          if (!user.id) console.log('refresh list');
+          if (!user.id) this.userService.refreshList(true);
           if (user.id) this.router.navigate(['/users']);
         },
         (error: any)=>{

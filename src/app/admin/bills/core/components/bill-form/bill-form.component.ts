@@ -89,7 +89,6 @@ export class BillFormComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log('bill', this.billFG.value);
     if(this.billFG.valid){
       let bill: Bill = Object.assign({},this.billFG.value);
       let request: Observable<any>;
@@ -102,7 +101,7 @@ export class BillFormComponent implements OnInit {
 
       request.subscribe(
         (response: any)=>{
-          if (!bill.id) console.log('refresh list');
+          if (!bill.id) this.billService.refreshList(true);
           if (bill.id) this.router.navigate(['/bills']);
         },
         (error: any)=>{

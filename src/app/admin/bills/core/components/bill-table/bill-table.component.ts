@@ -20,7 +20,12 @@ export class BillTableComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private billService: BillService
-  ) {}
+  ) {
+    this.billService.listenerRefreshList()
+    .subscribe( status => {
+      if(status) this.getBills();
+    })
+  }
 
   getBills(){
     this.billService.getBillsByCondominium().subscribe(

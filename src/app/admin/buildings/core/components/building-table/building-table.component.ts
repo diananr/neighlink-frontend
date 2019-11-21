@@ -20,13 +20,17 @@ export class BuildingTableComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private buildingService: BuildingService
-  ) {}
+  ) {
+    this.buildingService.listenerRefreshList()
+    .subscribe( status => {
+      if(status) this.getBuildings();
+    })
+  }
 
   getBuildings(){
     this.buildingService.getBuildingsByCondominium().subscribe(
       (response: any) =>{
         this.dataSource = response;
-        console.log('asdasd', response);
         this.dataSource.paginator = this.paginator;
       },
       (error: any) =>{

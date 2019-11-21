@@ -1,34 +1,29 @@
 <div style="margin: 8px 0; display: flex; justify-content:space-between">
-    <h3 style="margin: 0;">Pagos</h3>
-    <button mat-raised-button color="primary" (click)="openDialog()">Nuevo</button>
+    <h3 style="margin: 0 0 8px 0;">Pagos</h3>
 </div>
 <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" style="width: 100%;">
-    <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-    </ng-container>
-    <ng-container matColumnDef="bill">
+    <ng-container matColumnDef="billId">
         <th mat-header-cell *matHeaderCellDef> Cuenta </th>
-        <td mat-cell *matCellDef="let element"> {{element.bill}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.billId}} </td>
     </ng-container>
-    <ng-container matColumnDef="user">
+    <ng-container matColumnDef="userId">
         <th mat-header-cell *matHeaderCellDef> Usuario </th>
-        <td mat-cell *matCellDef="let element"> {{element.user}} </td>
-    </ng-container>
-    <ng-container matColumnDef="date">
-        <th mat-header-cell *matHeaderCellDef> Fecha de Pago </th>
-        <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
     </ng-container>
     <ng-container matColumnDef="amount">
         <th mat-header-cell *matHeaderCellDef> Monto </th>
         <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
     </ng-container>
-    <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef> Estado </th>
+    <ng-container matColumnDef="paymentDate">
+        <th mat-header-cell *matHeaderCellDef> Fecha de Pago </th>
+        <td mat-cell *matCellDef="let element"> {{element.paymentDate}} </td>
+    </ng-container>
+    <ng-container matColumnDef="hasPaid">
+        <th mat-header-cell *matHeaderCellDef> Pagado </th>
         <td mat-cell *matCellDef="let element">
             <mat-chip-list>
-                <mat-chip>{{element.status}}</mat-chip>
+                <mat-chip>{{element.hasPaid}}</mat-chip>
             </mat-chip-list>
         </td>
     </ng-container>

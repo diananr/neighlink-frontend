@@ -63,7 +63,7 @@ export class BuildingFormComponent implements OnInit {
 
       request.subscribe(
         (response: any)=>{
-          if (!building.id) console.log('refresh list');
+          if (!building.id) this.buildingService.refreshList(true);
           if (building.id) this.router.navigate(['/buildings']);
         },
         (error: any)=>{

@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { Router } from '@angular/router';
 import { Condominium } from 'src/app/core/models/condominium.model';
 import { CondominiumService } from 'src/app/core/services/condominium.service';
+import { USER_ROLE } from 'src/app/core/constants/global.constants';
 
 @Component({
   selector: 'login-form',
@@ -57,7 +58,8 @@ export class LoginFormComponent implements OnInit {
         .subscribe(
           (response: any) => {
             localStorage.setItem('userLogged', JSON.stringify(response));
-            this.router.navigateByUrl('/');
+            if (response.role == USER_ROLE.ADMINISTRATOR) this.router.navigateByUrl('/users');
+            if (response.role == USER_ROLE.OWNER) this.router.navigateByUrl('/payments');
             this.loading = false;
           },
           (error: any) => {

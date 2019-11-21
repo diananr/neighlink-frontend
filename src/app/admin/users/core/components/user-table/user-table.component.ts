@@ -20,7 +20,12 @@ export class UserTableComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private userService: UserService
-  ) {}
+  ) {
+    this.userService.listenerRefreshList()
+    .subscribe( status => {
+      if(status) this.getUsers();
+    })
+  }
 
   getUsers(){
     this.userService.getUsersByCondominium().subscribe(

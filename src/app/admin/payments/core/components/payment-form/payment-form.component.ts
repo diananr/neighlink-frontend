@@ -94,7 +94,7 @@ export class PaymentFormComponent implements OnInit {
 
       request.subscribe(
         (response: any)=>{
-          if (!payment.id) console.log('refresh list');
+          if (!payment.id) this.paymentService.refreshList(true);
           if (payment.id) this.router.navigate(['/payments']);
         },
         (error: any)=>{
