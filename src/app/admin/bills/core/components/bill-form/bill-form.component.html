@@ -4,19 +4,16 @@
     <mat-dialog-content class="mat-typography">
         <div class="example-container">
             <mat-form-field>
-                <input matInput placeholder="Título" formControlName="title">
+                <input matInput placeholder="Título" formControlName="name">
             </mat-form-field>
             <mat-form-field>
                 <mat-select placeholder="Edificio" formControlName="buildingId">
-                    <mat-option value="1">Los jazmines</mat-option>
-                    <mat-option value="2">Los girasoles</mat-option>
-                    <mat-option value="3">Las flores</mat-option>
+                    <mat-option *ngFor="let building of buildings" [value]="building.id">{{building.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field>
-                <mat-select placeholder="Tipo" formControlName="categoryId">
-                    <mat-option value="1">Luz</mat-option>
-                    <mat-option value="2">Agua</mat-option>
+                <mat-select placeholder="Categoría" formControlName="paymentCategoryId">
+                    <mat-option *ngFor="let category of paymentCategories" [value]="category.id">{{category.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field>
@@ -37,6 +34,6 @@
     <mat-dialog-actions align="end">
         <a *ngIf="billId" mat-button routerLink="/bills">Cancelar</a>
         <a *ngIf="!billId" mat-button mat-dialog-close>Cancelar</a>
-        <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Agregar</button>
+        <button type="submit" mat-button [mat-dialog-close]="true" cdkFocusInitial>Agregar</button>
     </mat-dialog-actions>
 </form>

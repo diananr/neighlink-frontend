@@ -9,6 +9,7 @@ export class BillService {
   ) { }
 
   createBill(request: any) {
+    delete request.id;
     return this.apiService.post('api/bill', request);
   }
 
@@ -22,5 +23,11 @@ export class BillService {
 
   getBillById(billId: number) {
     return this.apiService.get(`api/bill/byId/${billId}`);
+  }
+
+  getBillsByCondominium(condominiumId?: number) {
+    var userLogged = JSON.parse(localStorage.getItem('userLogged'));
+    var condoId = condominiumId ? condominiumId : userLogged.condominiumId;
+    return this.apiService.get('api/bill/by-condominium/'+ condoId);
   }
 }

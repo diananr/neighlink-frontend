@@ -5,6 +5,9 @@ import { BuildingService } from 'src/app/core/services/building.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Bill } from 'src/app/core/models/bill.model';
 import { Observable } from 'rxjs';
+import { Building } from 'src/app/core/models/building.model';
+import { PaymentCategory } from 'src/app/core/models/payment-category.model';
+import { PaymentCategoryService } from 'src/app/core/services/payment-category.service';
 
 @Component({
   selector: 'bill-form',
@@ -14,31 +17,49 @@ import { Observable } from 'rxjs';
 export class BillFormComponent implements OnInit {
   public billFG: FormGroup;
   public billId: number;
-  public buildings: any[];
+  public buildings: Building[];
+  public paymentCategories: PaymentCategory[];
 
-  constructor(private fb: FormBuilder, private billService: BillService,
-    private buildingService: BuildingService, private router: Router,
-    private route: ActivatedRoute) { }
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute,
+    private billService: BillService,
+    private buildingService: BuildingService,
+    private paymentCategoryService: PaymentCategoryService
+  ) { }
 
   reset(){
     this.billFG = this.fb.group({
       id: [],
-      title: ['',[Validators.required]],
+      name: ['',[Validators.required]],
+      description: [''],
       buildingId: ['',[Validators.required]],
-      categoryId: ['',[Validators.required]],
+      paymentCategoryId: ['',[Validators.required]],
       startDate: ['',[Validators.required]],
       endDate: ['',[Validators.required]],
       amount: ['',[Validators.required]],
-      status: []
     });
     this.billId = null;
     this.buildings = [];
+    this.paymentCategories = [];
   }
 
   getBuildings(){
     this.buildingService.getBuildingsByCondominium().subscribe(
       (response) => {
-        console.log('response', response);
+        this.buildings = response;
+      },
+      (error) => {
+        console.log('error', error)
+      }
+    )
+  }
+
+  getPaymentCategories(){
+    this.paymentCategoryService.getPaymentCategoriesByCondominium().subscribe(
+      (response) =>{
+        this.paymentCategories = response;
       },
       (error) => {
         console.log('error', error)
@@ -49,6 +70,7 @@ export class BillFormComponent implements OnInit {
   ngOnInit() {
     this.reset();
     this.getBuildings();
+    this.getPaymentCategories();
     this.route.params.subscribe((params: Params) => {
       this.billId = params.id;
       if(this.billId) this.getBill();
@@ -58,7 +80,7 @@ export class BillFormComponent implements OnInit {
   getBill(){
     this.billService.getBillById(this.billId).subscribe(
       (response: any)=>{
-        this.billFG.patchValue(response.data);
+        this.billFG.patchValue(response);
       },
       (error: any)=>{
         console.log('error', error);
@@ -67,6 +89,7 @@ export class BillFormComponent implements OnInit {
   }
 
   onSubmit(){
+    console.log('bill', this.billFG.value);
     if(this.billFG.valid){
       let bill: Bill = Object.assign({},this.billFG.value);
       let request: Observable<any>;
