@@ -12,7 +12,12 @@
             <input matInput type="password" placeholder="Contraseña" formControlName="password" name="loginPassword">
         </mat-form-field>
         <div>
-            <button type="submit" mat-raised-button color="primary" style="width: 100%;">Iniciar Sesión</button>
+            <button type="submit" mat-raised-button color="primary" style="width: 100%" [disabled]="loading">
+                <span *ngIf="!loading">Iniciar Sesión</span>
+                <div style="display:inline-block; margin: auto">
+                    <mat-spinner *ngIf="loading" diameter="40"></mat-spinner>
+                </div>
+            </button>
         </div>
     </div>
 </form>

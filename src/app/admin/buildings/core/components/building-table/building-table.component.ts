@@ -24,7 +24,12 @@ export class BuildingTableComponent implements OnInit {
     this.buildingService.listenerRefreshList()
     .subscribe( status => {
       if(status) this.getBuildings();
-    })
+    });
+    const response: any = [
+      {name: 'Edificio 1', numberOfHomes: 40},
+      {name: 'Edificio 2', numberOfHomes: 38},
+    ];
+    this.dataSource = response;
   }
 
   getBuildings(){

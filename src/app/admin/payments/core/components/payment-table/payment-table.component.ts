@@ -27,6 +27,11 @@ export class PaymentTableComponent implements OnInit {
     .subscribe( status => {
       if(status) this.getPayments();
     })
+    const response: any = [
+      {billId: 1, userId: 'Piero', amount: 60.50, paymentDate: '-', hasPaid: 'Pendiente'},
+      {billId: 2, userId: 'Frank', amount: 20.00, paymentDate: '-', hasPaid: 'Pendiente'},
+    ];
+    this.dataSource = response;
   }
 
   getPayments(){

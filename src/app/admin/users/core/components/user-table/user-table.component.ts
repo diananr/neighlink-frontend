@@ -25,6 +25,11 @@ export class UserTableComponent implements OnInit {
     .subscribe( status => {
       if(status) this.getUsers();
     })
+    const response: any = [
+      {id: 1, name: 'Piero', lastName: 'Taboada', email: 'piero@gmail.com', phone: '987898789', buildingId: 'Edificio 1', houseNumber: '1-201'},
+      {id: 2, name: 'Frank', lastName: 'Alvarado', email: 'frank@gmail.com', phone: '987898777', buildingId: 'Edificio 2', houseNumber: '2-402'},
+    ];
+    this.dataSource = response;
   }
 
   getUsers(){

@@ -25,6 +25,11 @@ export class BillTableComponent implements OnInit {
     .subscribe( status => {
       if(status) this.getBills();
     })
+    const response: any = [
+      {id: 1, name: 'Agua', amount: 1030.45, paymentCategoryId: 'Regulares', buildingId: 'Edificio 1', endDate: '04-10-20', status: 'Sin pago'},
+      {id: 1, name: 'Limpieza', amount: 200.00, paymentCategoryId: 'G. Comunes', buildingId: 'Edificio 2', endDate: '01-10-20', status: 'Sin pago'},
+    ];
+    this.dataSource = response;
   }
 
   getBills(){

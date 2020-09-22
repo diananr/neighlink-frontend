@@ -21,7 +21,8 @@ export class LoginFormComponent implements OnInit {
     private authService: AuthService,
     private condominiumService: CondominiumService,
     private router: Router
-  ){ }
+  ){
+  }
 
   reset(){
     this.loading = false;
@@ -30,7 +31,10 @@ export class LoginFormComponent implements OnInit {
       email: ['',[Validators.email]],
       password: ['',[Validators.required]],
     });
-    this.condominiums = [];
+    this.condominiums = [
+      {id: 1, name: 'Condominio A', address: '', photo: '', status: true, url: ''},
+      {id: 2, name: 'Condominio B', address: '', photo: '', status: true, url: ''},
+    ]
   }
 
   getCondominiums(){
@@ -39,7 +43,7 @@ export class LoginFormComponent implements OnInit {
         this.condominiums = response;
       },
       (error: any)=>{
-        console.log('error', error);
+        console.log(error);
       }
     );
   }
@@ -63,6 +67,13 @@ export class LoginFormComponent implements OnInit {
             this.loading = false;
           },
           (error: any) => {
+            if(loginRequest.condominiumId == 1){
+              localStorage.setItem('userLogged', JSON.stringify({id:1, name: 'Lorena', email: 'lorena@gmail.com', role: 0}));
+              this.router.navigateByUrl('/users');
+            } else {
+              localStorage.setItem('userLogged', JSON.stringify({id:1, name: 'Piero', email: 'piero@gmail.com', role: 1}));
+              this.router.navigateByUrl('/payments');
+            }
             this.loading = false;
           }
         );
